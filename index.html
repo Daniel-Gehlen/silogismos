@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinador de Silogismos Aristotélicos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Treinador de Silogismos Aristotélicos</h1>
+        <p>Este software ajuda você a praticar as formas válidas de silogismo na lógica aristotélica.</p>
+        
+        <div class="controls">
+            <button id="generate-btn">Gerar Novo Problema</button>
+        </div>
+        
+        <div id="problem-container" class="problem-container hidden">
+            <h2>Problema Gerado</h2>
+            <div id="problem-statement" class="problem-statement"></div>
+            
+            <h3>Estrutura do Silogismo</h3>
+            <table id="silogism-structure" class="silogism-figure">
+                <thead>
+                    <tr>
+                        <th>Premissa Maior</th>
+                        <th>Premissa Menor</th>
+                        <th>Conclusão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="major-premise"></td>
+                        <td id="minor-premise"></td>
+                        <td id="conclusion"></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Termos do Silogismo</h3>
+            <div id="terms" class="terms-container"></div>
+            
+            <h3>Regras de Validade</h3>
+            <div id="rules" class="rules-container"></div>
+            
+            <div id="user-response" class="user-response">
+                <h3>Sua Resposta</h3>
+                
+                <div class="form-group">
+                    <label for="figure-select">Qual a figura do silogismo?</label>
+                    <select id="figure-select" class="form-control">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="1">1ª Figura (M-P, S-M, S-P)</option>
+                        <option value="2">2ª Figura (P-M, S-M, S-P)</option>
+                        <option value="3">3ª Figura (M-P, M-S, S-P)</option>
+                        <option value="4">4ª Figura (P-M, M-S, S-P)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="validity-select">O silogismo é válido?</label>
+                    <select id="validity-select" class="form-control">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="valid">Válido</option>
+                        <option value="invalid">Inválido</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Quais regras foram violadas?</label>
+                    <div id="rules-checklist" class="rules-checklist">
+                        <label class="rule-option">
+                            <input type="checkbox" name="rule" value="0" id="rule-0">
+                            Termo médio deve estar distribuído em pelo menos uma premissa
+                        </label>
+                        <label class="rule-option">
+                            <input type="checkbox" name="rule" value="1" id="rule-1">
+                            Nenhum termo distribuído na conclusão sem estar nas premissas
+                        </label>
+                        <label class="rule-option">
+                            <input type="checkbox" name="rule" value="2" id="rule-2">
+                            Premissas negativas não geram conclusão afirmativa
+                        </label>
+                        <label class="rule-option">
+                            <input type="checkbox" name="rule" value="3" id="rule-3">
+                            Se uma premissa é particular, a conclusão também deve ser
+                        </label>
+                        <label class="rule-option">
+                            <input type="checkbox" name="rule" value="none" id="rule-none">
+                            Nenhuma regra foi violada
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="submit-btn" class="btn-submit">Verificar Resposta</button>
+                <div id="feedback" class="feedback hidden"></div>
+            </div>
+            
+            <div class="score-container">
+                <h3>Seu Desempenho</h3>
+                <p>Acertos: <span id="correct-count">0</span> | Erros: <span id="wrong-count">0</span></p>
+            </div>
+            
+            <div id="solution" class="solution hidden">
+                <h3>Solução</h3>
+                <div id="solution-content"></div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h2>Como Funciona</h2>
+            <p>Clique em "Gerar Novo Problema" para criar um silogismo aleatório. Tente identificar:</p>
+            <ul>
+                <li>A figura do silogismo (1ª a 4ª) - analisando a posição dos termos</li>
+                <li>Os termos (Sujeito, Predicado e Termo Médio)</li>
+                <li>Se o silogismo é válido ou não</li>
+                <li>Quais regras de validade são aplicáveis</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
